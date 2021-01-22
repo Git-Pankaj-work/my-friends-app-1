@@ -131,6 +131,7 @@ public class FriendController {
 	@RequestMapping(value = "/deletefriend/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable int id) {
 		log.info("Inside FriendController.deletefriend");
+		log.info("added this line to test git");
 		friendService.deleteFriendById(id);
 		return "redirect:/view_all_friends";
 	}
