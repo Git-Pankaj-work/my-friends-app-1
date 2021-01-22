@@ -40,6 +40,7 @@ public class FriendController {
 	@RequestMapping("/add_new_friend_form_1")
 	public String showFormPage() {
 		log.info("Inside FriendController.showFormPage ");
+		log.info("added this line to test git");
 		return "addFriendForm1";
 	}
 
