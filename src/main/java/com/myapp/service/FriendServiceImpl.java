@@ -29,6 +29,7 @@ public class FriendServiceImpl implements FriendService {
 
 	@Override
 	public Friend getFriendById(Integer id) {
+		log.info("Inside FriendServiceImpl.getFriendById method");
 		return friendRepository.findById(id).get();
 	}
 

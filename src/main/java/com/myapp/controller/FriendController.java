@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,7 +29,10 @@ public class FriendController {
 	@Autowired
 	FriendService friendService;
 
-	@RequestMapping("/")
+	
+	//@RequestMapping("/")
+	//@RequestMapping(value="/",method=RequestMethod.GET)
+	@GetMapping("/")
 	public String homePage() {
 		log.info("Inside FriendController.homePage ");
 		return "viewfriends";
@@ -37,14 +42,16 @@ public class FriendController {
 	// INSERT Friend Operation (way-01)
 	// ################################################################
 
-	@RequestMapping("/add_new_friend_form_1")
+	//@RequestMapping("/add_new_friend_form_1")
+	@GetMapping("/add_new_friend_form_1")
 	public String showFormPage() {
 		log.info("Inside FriendController.showFormPage ");
 		log.info("added this line to test git");
 		return "addFriendForm1";
 	}
 
-	@RequestMapping("/save_my_friend_1")
+	//@RequestMapping("/save_my_friend_1")
+	@GetMapping("/save_my_friend_1")
 	public String saveMyFrind(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("phone") String phone, Model model) {
 
 		log.info("Inside FriendController.saveMyFrind");
@@ -74,7 +81,8 @@ public class FriendController {
 		return "addFriendForm2";
 	}
 
-	@RequestMapping(value = "/save_my_friend_2", method = RequestMethod.POST)
+	//@RequestMapping(value = "/save_my_friend_2", method = RequestMethod.POST)
+	@PostMapping(value = "/save_my_friend_2")
 	public String saveMyFrind2(@Valid @ModelAttribute("friend") Friend friend, BindingResult bindingResult,	Model model) {
 		log.info("Inside FriendController.saveMyFrind2 ");
 		if (bindingResult.hasErrors()) {
